@@ -1,16 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var preferredLanguage = navigator.language || navigator.userLanguage;
-    preferredLanguage = preferredLanguage.substr(0, 2).toLowerCase();
+    var preferredLang = navigator.language || navigator.userLanguage;
+    preferredLang = preferredLang.substr(0, 2).toLowerCase();
+    console.log(preferredLang);
 
-    var supportedLanguages = ['en', 'zh'];
-    var defaultLanguage = 'en';
+    var supportedLang = ['en', 'zh'];
+    var defaultLang = 'en';
 
-    var currentLang = window.location.pathname.split('/')[-1];
-    print(currentLang);
-
-    if (supportedLanguages.indexOf(preferredLanguage) === -1 && currentLang !== preferredLanguage) {
-        window.location.href = '/' + preferredLanguage + '/index.html';
-    } else if (supportedLanguages.indexOf(preferredLanguage) !== -1) {
-        window.location.href = '/' + defaultLanguage + '/index.html';
+    if (supportedLang.indexOf(preferredLang) !== -1) {
+        window.location.href = '/' + preferredLang + '/index.html';
+    } else if (supportedLang.indexOf(preferredLang) == -1) {
+        window.location.href = '/' + defaultLang + '/index.html';
     }
 });
