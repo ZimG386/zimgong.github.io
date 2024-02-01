@@ -5,9 +5,12 @@ document.addEventListener('DOMContentLoaded', function () {
     var supportedLanguages = ['en', 'zh'];
     var defaultLanguage = 'en';
 
-    if (supportedLanguages.indexOf(preferredLanguage) === -1) {
-        window.location.href = '/index.html';
-    } else {
-        window.location.href = '/index_zh.html';
+    var currentLang = window.location.pathname.split('/')[-1];
+    print(currentLang);
+
+    if (supportedLanguages.indexOf(preferredLanguage) === -1 && currentLang !== preferredLanguage) {
+        window.location.href = '/' + preferredLanguage + '/index.html';
+    } else if (supportedLanguages.indexOf(preferredLanguage) !== -1) {
+        window.location.href = '/' + defaultLanguage + '/index.html';
     }
 });
